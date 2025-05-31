@@ -24,7 +24,6 @@ export const getItems = (req: Request, res: Response, next: NextFunction) => {
         items.splice(index, 1);
       }
     });
-    // let filtered = items.filter(item => item.viewsLeft != 0); 
     res.json(items);
   } catch (error) {
     next(error);
