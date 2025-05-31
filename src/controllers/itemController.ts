@@ -14,13 +14,13 @@ export const createItem = (req: Request, res: Response, next: NextFunction) => {
 };
 
 // // Read all items
-// export const getItems = (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     res.json(items);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+export const getItems = (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+};
 //
 // // Read single item
 // export const getItemById = (req: Request, res: Response, next: NextFunction) => {

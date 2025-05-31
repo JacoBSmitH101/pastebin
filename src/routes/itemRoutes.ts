@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import {
   createItem,
-  // getItems,
+  getItems,
   // getItemById,
   // updateItem,
   // deleteItem,
@@ -9,7 +9,7 @@ import {
 
 const router = Router();
 
-// router.get('/', getItems);
+router.get('/', getItems);
 // router.get("/:id", getItemById);
 router.post("/", createItem);
 // router.put("/:id", updateItem);
