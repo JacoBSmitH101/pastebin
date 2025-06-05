@@ -6,7 +6,7 @@ export const createItem = (req: Request, res: Response, next: NextFunction) => {
   try {
     const { content, viewsLeft = null } = req.body;
     const newItem: Item = { id: uuidv4(), content: content, createdAt: Date.now().toString() };
-    viewsLeft ? newItem.viewsLeft = viewsLeft : null;
+    viewsLeft && viewsLeft != -1 ? newItem.viewsLeft = viewsLeft : null;
     items.push(newItem);
     res.status(201).json(newItem);
   } catch (error) {
@@ -39,6 +39,12 @@ export const getItemById = (req: Request, res: Response, next: NextFunction) => 
       res.status(404).json({ message: 'Item not found' });
       return;
     }
+
+      item.viewsLeft ? item.viewsLeft-- : null;
+if (item.viewsLeft == 0) {
+        const index = items.indexOf(item);
+        items.splice(index, 1);
+      }
     res.json(item);
   } catch (error) {
     next(error);

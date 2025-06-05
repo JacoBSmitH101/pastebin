@@ -5,11 +5,7 @@ import { initDb } from '../db/index';
 
 async function startServer() {
   await initDb();
-  app.use(cors({
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST'],
-    credentials: true
-  }))
+  app.use(cors())
   app.listen(config.port, () => {
     console.log(`Server running on port ${config.port}`);
   });
